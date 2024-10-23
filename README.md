@@ -9,7 +9,7 @@ scripted three layer fight with tile movement and rpg fighing systems
 deep sea knight has a 2x2 box and can hit in a 2x radius around him
 only can move 1 space at a time
 heavy attack will instant kill player but requires a wind up, but creates a hole in the ground where it hits
-a hole in the ground cannot be walked into
+a hole in the ground cannot be walked into, instant kills player
 light attack knocks the player back, covers a large area
 fight 1 does not enter phase 2
 fight 2 enters phase 2 at half health
@@ -18,7 +18,8 @@ phase 2:
 shrugs off damage less than 5
 gains:
 weak ranged attack called "Carpenter's song" stuns player skipping one turn cooldown of 3 turns
-buff called "walrus's blessing" boosts speed and attack for 3 turns cooldown of 5 turns
+buff called "walrus's blessing" boosts speed, defense, and attack for 3 turns cooldown of 5 turns
+after using walrus's blessing should have the Deep Sea Knight able to hit a crushing anchor after 1 turn meaning player can't leave his range and will get hit with it if player does not attempt to dodge or stun
 
 ### Player
 player is 1x1 and can hit in a 1x radious around
