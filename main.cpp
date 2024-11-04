@@ -1,7 +1,8 @@
-
+#include "proto.h"
 
 int main()
 {
+    
     /*
     * Create a new game
     * 100 by 100 by 3 grid
@@ -54,5 +55,31 @@ int main()
     *    ~ defense up: decreases damage taken by 10% for 3 turns
     *    ~ speed up: decreased time for a turn by half for 3 turns
     */
+
+    char grid[100][100][3];
+    int pos[2] = {-1, -1};
+    int DSKpos[2] = {-1, -1};
+    initialize(grid);
+    initializePlayer(grid, pos);
+    initializeDSK(grid, DSKpos);
+    bool game = true;
+    while (game)
+    {
+        system("clear");
+        print(grid, pos);
+        bool Pturn = true;
+        if (Pturn)
+        {
+            // playerTurn();
+            Pturn = false;
+        }
+        else
+        {
+            // DSKTurn();
+            Pturn = true;
+        }
+        game = false; //kill program
+    }
+
     return 0;
 }
