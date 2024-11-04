@@ -11,7 +11,10 @@ HDRS = proto.h
 OBJS = $(SRCS:.cpp=.o)
 
 # Executable
-TARGET = program
+TARGET = main
+
+run: $(TARGET)
+	./$(TARGET)
 
 all: $(TARGET)
 

@@ -55,27 +55,32 @@ void print(char grid[100][100][3], int pos[])
     // print a 19 by 19 grid with player in the middle
     // check if player is near the border of the array
     // only print what is in the array and " " for empty spaces
-    if(pos[0] < 9 || pos[0] > 90 || pos[1] < 9 || pos[1] > 90)
+    int temp[2] = {pos[0], pos[1]};
+    if(pos[0] < 9)
     {
-        for (int i = 0; i < 19; i++)
-        {
-            for (int j = 0; j < 19; j++)
-            {
-                cout << grid[i][j][0] << ' ';
-            }
-            cout << endl;
-        }
+        temp[0] = 9;
     }
-    else
+    if(pos[0] > 90)
     {
-        for (int i = pos[0] - 9; i < pos[0] + 10; i++)
-        {
-            for (int j = pos[1] - 9; j < pos[1] + 10; j++)
-            {
-                cout << grid[i][j][0] << ' ';
-            }
-            cout << endl;
-        }
+        temp[0] = 90;
     }
-    cout << "Player position: " << pos[0] << ", " << pos[1] << endl;
+    if(pos[1] < 9)
+    {
+        temp[1] = 9;
+    }
+    if(pos[1] > 90)
+    {
+        temp[1] = 90;
+    }
+    
+    for (int i = temp[0] - 9; i < temp[0] + 10; i++)
+    {
+        for (int j = temp[1] - 9; j < temp[1] + 10; j++)
+        {
+            cout << grid[i][j][0] << ' ';
+        }
+        cout << endl;
+    }
+    
+    // cout << "Player position: " << pos[0] << ", " << pos[1] << endl;
 }
