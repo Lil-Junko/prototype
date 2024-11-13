@@ -12,8 +12,8 @@ void initialize(char grid[100][100][3]);
 void initializePlayer(char grid[100][100][3], int pos[]);
 void initializeDSK(char grid[100][100][3], int DSKpos[]);
 void print(char grid[100][100][3], int pos[]);
-void playerTurn(); //player
-void DSKTurn(); //deep sea knight
+void playerTurn(char grid[100][100][3], int pos[]); //player
+void DSKTurn(char grid[100][100][3], int DSKpos[], int pos[]); //deep sea knight
 
 
 #endif // PROTO_H
