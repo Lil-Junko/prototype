@@ -146,7 +146,7 @@ void DSKTurn(char grid[100][100][3], int DSKpos[], int pos[])
     // if player is above DSK
     if (DSKpos[0] - pos[0] > 0)
     {
-        if (grid[DSKpos[0] - 1][DSKpos[1]][0] == '.')
+        if (grid[DSKpos[0] - 1][DSKpos[1]][0] == '.' && grid[DSKpos[0] - 1][DSKpos[1] + 1][0] == '.')
         {
             // move up, DSKpos includes the space bellows it to the right, and bellow to the right
             // DSKpos[0] is the top left corner of the DSK
@@ -159,7 +159,7 @@ void DSKTurn(char grid[100][100][3], int DSKpos[], int pos[])
         }
     }
     // if player is below DSK
-    else if (DSKpos[0] - pos[0] < 0)
+    else if (DSKpos[0] - pos[0] < -2)
     {
         if (grid[DSKpos[0] + 2][DSKpos[1]][0] == '.')
         {
@@ -170,10 +170,10 @@ void DSKTurn(char grid[100][100][3], int DSKpos[], int pos[])
             DSKpos[0] += 1;
         }
     }
-    // if player is to the right of DSK
+    // if player is to the left of DSK
     else if (DSKpos[1] - pos[1] > 0)
     {
-        if (grid[DSKpos[0]][DSKpos[1] - 1][0] == '.')
+        if (grid[DSKpos[0]][DSKpos[1] - 1][0] == '.' && grid[DSKpos[0] + 1][DSKpos[1] - 1][0] == '.')
         {
             grid[DSKpos[0]][DSKpos[1] - 1][0] = 'K';
             grid[DSKpos[0]][DSKpos[1] + 1][0] = '.';
@@ -181,9 +181,10 @@ void DSKTurn(char grid[100][100][3], int DSKpos[], int pos[])
             grid[DSKpos[0] + 1][DSKpos[1] + 1][0] = '.';
             DSKpos[1] -= 1;
         }
+        cout << "DSK left: " << DSKpos[0] << ", " << DSKpos[1] << endl;
     }
-    // if player is to the left of DSK
-    else if (DSKpos[1] - pos[1] < 0)
+    // if player is to the right of DSK
+    else if (DSKpos[1] - pos[1] < -1)
     {
         if (grid[DSKpos[0]][DSKpos[1] + 2][0] == '.')
         {
@@ -193,5 +194,6 @@ void DSKTurn(char grid[100][100][3], int DSKpos[], int pos[])
             grid[DSKpos[0] + 1][DSKpos[1]][0] = '.';
             DSKpos[1] += 1;
         }
+        cout << "DSK right: " << DSKpos[0] << ", " << DSKpos[1] << endl;
     }
 }
