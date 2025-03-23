@@ -1,0 +1,9 @@
+[place stranger]
+dialogue:
+/
+"hello stranger"
+"can you help me?"
+[option] yes ([quest]"find my pendant please") | no ([quest]"You don't have a choice")
+/
+[open door]
+[place chest]
