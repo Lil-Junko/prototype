@@ -1,13 +1,32 @@
 #include "proto.h"
 
-void initialize(char grid[100][100][3])
+void initializelevel(char grid[100][100][4])
+{
+    //initialize level to have 3 rooms with 3 doors
+    //100 by 100 grid divided into 3 rooms
+    for(int i = 0; i < 100; i++)
+    {
+        //box
+        grid[i][99][0] = '#'; //top wall
+        grid[i][0][0] = '#'; //bottom wall
+        grid[99][i][0] = '#'; //right wall
+        grid[0][i][0] = '#'; //left wall
+        // for(int j = 0; j < 100; j++)
+        // {
+        //     grid[i][100][0] = '#';
+        // }
+    }
+    
+}
+
+void initialize(char grid[100][100][4])
 {
     // set whole grid to . for empty space
     for (int i = 0; i < 100; i++)
     {
         for (int j = 0; j < 100; j++)
         {
-            for (int k = 0; k < 3; k++)
+            for (int k = 0; k < 4; k++)
             {
                 grid[i][j][k] = '.';
             }
@@ -24,7 +43,7 @@ void initialize(char grid[100][100][3])
     // grid[knightX][knightY][0] = 'K';
 }
 
-void initializePlayer(char grid[100][100][3], int pos[])
+void initializePlayer(char grid[100][100][4], int pos[])
 {
     // place player in a random side on the right between 100 and 60
     srand(time(NULL));
@@ -38,7 +57,7 @@ void initializePlayer(char grid[100][100][3], int pos[])
     // save player position in pos[]
 }
 
-void initializeDSK(char grid[100][100][3], int DSKpos[])
+void initializeDSK(char grid[100][100][4], int DSKpos[])
 {
     // place deep sea knight on the left between 0 and 40
     int knightX = rand() % 40;
@@ -55,7 +74,7 @@ void initializeDSK(char grid[100][100][3], int DSKpos[])
     cout << "DSK position: " << DSKpos[0] << ", " << DSKpos[1] << endl;
 }
 
-void print(char grid[100][100][3], int pos[])
+void print(char grid[100][100][4], int pos[])
 {
     // print a 19 by 19 grid with player in the middle
     // check if player is near the border of the array
@@ -89,7 +108,7 @@ void print(char grid[100][100][3], int pos[])
     cout << "Player position: " << pos[0] << ", " << pos[1] << endl;
 }
 
-void playerTurn(char grid[100][100][3], int pos[])
+void playerTurn(char grid[100][100][4], int pos[])
 {
     // check if player moves up(w), down(s), left(a), right(d)
     char move = ' ';
@@ -137,7 +156,7 @@ void playerTurn(char grid[100][100][3], int pos[])
     }
 }
 
-void DSKTurn(char grid[100][100][3], int DSKpos[], int pos[])
+void DSKTurn(char grid[100][100][4], int DSKpos[], int pos[])
 {
     // check if player is in range
     // if player is in range, attack
@@ -196,4 +215,34 @@ void DSKTurn(char grid[100][100][3], int DSKpos[], int pos[])
         }
         cout << "DSK right: " << DSKpos[0] << ", " << DSKpos[1] << endl;
     }
+}
+
+int typecheck(string line)
+{
+    if (line[0] == '[' && line[line.length() - 1] == ']') //action
+    {
+        return 1;
+    }
+    else if (line[0] == '/') //dialogue
+    {
+        return 2;
+    }
+    return 0;
+}
+
+int action(string line)
+{
+    if(line == "[open door]")
+    {
+        return 1;
+    }
+    else if(line == "[place chest]")
+    {
+        return 2;
+    }
+    else if(line == "[place stranger]")
+    {
+        return 3;
+    }
+    return 0;
 }
